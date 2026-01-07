@@ -1056,4 +1056,39 @@ body {
     z-index: 10000000000000000;
 }
 
+/* =====================================
+   POPUP OVERFLOW FIX (SAFE OVERRIDE)
+   DOES NOT CHANGE ORIGINAL CODE
+   ===================================== */
+
+html, body {
+    overflow-x: hidden;
+}
+
+.box__letter .letter__border {
+    width: min(92vw, 520px) !important;
+    max-height: 85vh !important;
+    height: auto !important;
+    overflow: hidden !important;
+}
+
+.letter__border .letter {
+    max-height: 80vh !important;
+    height: auto !important;
+    overflow-y: auto !important;
+}
+
+@media screen and (max-width: 658px) {
+    .box__letter .letter__border {
+        width: 92vw !important;
+        max-height: 85vh !important;
+    }
+
+    .letter__border .letter {
+        max-height: 80vh !important;
+        overflow-y: auto !important;
+    }
+}
+
+
 
