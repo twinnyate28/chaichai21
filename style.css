@@ -1024,63 +1024,67 @@ body {
     z-index: 10000000000000000;
 }
 
-/* ================================
-   FORCE MOBILE PORTRAIT LAYOUT
-   (WORKS WITH YOUR HTML STRUCTURE)
-================================ */
+/* =====================================
+   MOBILE LAYOUT OVERRIDE (FORCED)
+   THIS FIXES ABSOLUTE POSITIONING
+===================================== */
 
 @media (max-width: 480px) {
 
-    /* Stack left and right */
+    /* Cancel absolute positioning */
+    .content,
+    .left,
+    .right,
+    .box__account,
+    .title,
+    .date__of__birth,
+    .btn {
+        position: static !important;
+    }
+
+    /* Force vertical layout */
     .content {
-        flex-direction: column;
+        display: flex !important;
+        flex-direction: column !important;
         align-items: center;
-        gap: 20px;
+        gap: 16px;
+        padding-top: 30px;
     }
 
-    /* Order main sections */
-    .left {
+    /* Happy + Birthday */
+    .title {
         order: 1;
-        width: 100%;
         text-align: center;
     }
 
-    .right {
-        order: 2;
-        width: 100%;
-        text-align: center;
-    }
-
-    /* Picture first inside right */
+    /* Picture */
     .box__account {
+        order: 2;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    /* Picture */
-    .box__account .image {
-        order: 1;
-    }
-
     /* Dear Charlyn */
     .box__account .name {
-        order: 2;
-        margin-top: 10px;
+        order: 3;
+        margin-top: 8px;
     }
 
     /* Date */
     .date__of__birth {
-        margin-top: 14px;
+        order: 4;
+        margin-top: 12px;
         font-size: 16px;
     }
 
     /* Button */
     .btn {
+        order: 5;
         margin-top: 10px;
     }
 
-    /* Resize image for phone */
+    /* Image resize */
     .box__account .image img {
         width: 180px;
         height: 180px;
