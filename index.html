@@ -249,6 +249,18 @@
 
     var intervalContent;
     var intervalTitle;
+
+    // ✅ FIXED: Mail click listener outside button click
+    $(".mail").on("click", function () {
+        birthdaySong.pause();
+        birthdaySong.currentTime = 0;
+
+        letterSong.volume = 0.4;
+        letterSong.play().catch(()=>{});
+
+        $(".boxMail").addClass("active");
+    });
+
     $("#btn__letter").on("click", function () {
         $(".box__letter").slideDown()
         setTimeout(function () {
@@ -268,26 +280,7 @@
                 }
             }, 100)
         }, 2000)
-         $(".mail").on("click", function () {
-            birthdaySong.pause();
-            birthdaySong.currentTime = 0;
 
-            letterSong.volume = 0.4;
-            letterSong.play().catch(()=>{});
-
-            $(".boxMail").addClass("active");
-        });
-
-        // Close letter
-        $(".fa-xmark").on("click", function () {
-            $(".boxMail").removeClass("active");
-
-            letterSong.pause();
-            letterSong.currentTime = 0;
-
-            birthdaySong.play().catch(()=>{});
-        });
-        
         setTimeout(function () {
             document.querySelector("#heart__letter").classList.add("animationOp");
             document.querySelector(".love__img").classList.add("animationOp");
@@ -310,6 +303,7 @@
             }, 50)
         }, 6000)
     })
+    
     $(".close").on("click", function () {
         clearInterval(intervalContent)
         document.querySelector(".title__letter").textContent = "";
@@ -340,12 +334,3 @@
 </script>
 
 </html>
-
-
-
-
-
-
-
-
-
