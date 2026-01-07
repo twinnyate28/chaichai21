@@ -1023,3 +1023,43 @@ body {
     color: white;
     z-index: 10000000000000000;
 }
+@media screen and (max-width: 768px) and (orientation: portrait) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .content .left,
+    .content .right {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 1.6rem;
+        letter-spacing: 4px;
+    }
+
+    .content .right .image {
+        width: 220px;
+        height: 220px;
+    }
+
+    .name span {
+        font-size: 1.1rem;
+    }
+
+    #btn__letter {
+        width: 220px;
+    }
+
+    .boxMail .boxMail-container {
+        width: 90vw;
+        height: 70vh;
+    }
+}
