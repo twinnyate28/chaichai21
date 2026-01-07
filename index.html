@@ -63,21 +63,7 @@
                     </div>
                 </div>
 
-                <div class="date__of__birth">
-                    <span></span>
-                </div>
-
-                <div class="btn">
-                    <button id="btn__letter">
-                        <div class="mail">
-                            Cha &lt;3
-                            <i class="fa-regular fa-envelope"></i>
-                        </div>
-                    </button>
-                </div>
-            </div>
-
-            <div class="right">
+            <div class="center">
                 <div class="box__account">
                     <div class="image">
                         <img src="./images/unnamed.png">
@@ -89,6 +75,16 @@
                         <i class="fa-solid fa-heart"></i>
                     </div>
 
+                    <div class="btn">
+                    <button id="btn__letter">
+                        <div class="mail">
+                            Cha &lt;3
+                            <i class="fa-regular fa-envelope"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+                
                     <div class="balloon_one">
                         <img src="./images/balloon1.png" width="100">
                     </div>
@@ -118,7 +114,7 @@
         /* ===== PLAY HAPPY BIRTHDAY ON FIRST CLICK ===== */
         document.body.addEventListener("click", function () {
             if (!birthdayStarted) {
-                birthdaySong.volume = 0.4;
+                birthdaySong.volume = 0.3;
                 birthdaySong.play().catch(() => { });
                 birthdayStarted = true;
             }
@@ -126,7 +122,6 @@
 
         /* ===== ORIGINAL SCRIPT (UNCHANGED, ONLY ADDED LINES INSIDE) ===== */
 
-        let datetxt = "January 7, 2026";
         let datatxtletter = "My love. You are a very special girl...";
         let charArrDate = datetxt.split('');
         let currentIndex = 0;
@@ -148,7 +143,7 @@
             birthdaySong.pause();
             birthdaySong.currentTime = 0;
 
-            letterSong.volume = 0.4;
+            letterSong.volume = 0.3;
             letterSong.play().catch(() => { });
 
             $(".boxMail").addClass("active");
@@ -161,3 +156,4 @@
 
 </body>
 </html>
+
