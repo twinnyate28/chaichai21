@@ -1022,4 +1022,50 @@ body {
     cursor: pointer;
     color: white;
     z-index: 10000000000000000;
+
+    /* Allow scrolling inside the letter */
+.boxMail .boxMail-container .card2 .card2-content {
+    overflow-y: auto;
+    padding: 25px 20px;
+    box-sizing: border-box;
+}
+
+/* Smooth scrolling */
+.boxMail .boxMail-container .card2 .card2-content {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar (optional but pretty) */
+.boxMail .boxMail-container .card2 .card2-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.boxMail .boxMail-container .card2 .card2-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+/* Make the actual letter text behave properly */
+.letter-text {
+    white-space: pre-line;
+    line-height: 1.7;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Mobile optimization */
+@media screen and (max-width: 658px) {
+    .boxMail .boxMail-container {
+        width: 95vw;
+        height: 85vh;
+    }
+
+    .boxMail .boxMail-container .card2 .card2-content {
+        padding: 15px;
+    }
+
+    .letter-text {
+        font-size: 13px;
+    }
+}
 }
