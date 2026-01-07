@@ -14,103 +14,138 @@
     --color-black: #333;
     --color-text-pink: #FF7882;
     --color-heart: #FF7882;
-    --color-bg-letter: #fff8e4;
+    --color-bg-letter: #FF7882; /* pink letter background */
     --color-border: #DACCBF;
 }
 
 html, body {
     height: 100%;
-    font-family: "Poppins", sans-serif;
     font-size: 16px;
-    background-image: linear-gradient(var(--color-pink), var(--color-pink));
+    background: var(--color-pink);
+    font-family: "Poppins", sans-serif;
 }
 
 #wrapper {
     position: relative;
-    height: 100%;
+    background-color: transparent;
     overflow: hidden;
+    height: 100%;
 }
 
-/* FLAG ANIMATION */
 .flag__birthday {
     display: flex;
     justify-content: space-between;
-    transform: translateY(-200px);
-    animation: translateYFlag 1.5s 2s forwards;
+    transform: translateY(-10px);
 }
-@keyframes translateYFlag {
-    to { transform: translateY(-10px); }
-}
-.flag__birthday .flag__left { transform: rotate(-10deg) translate(-20px,30px); }
-.flag__birthday .flag__right { transform: rotate(10deg) translate(20px,30px) scaleX(-1); }
 
-/* CONTENT */
+.flag__birthday .flag__left {
+    transform: rotate(-10deg) translate(-20px, 30px);
+}
+
+.flag__birthday .flag__right {
+    transform: rotate(10deg) translate(20px, 30px) scaleX(-1);
+}
+
 .content {
     display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
+    justify-content: center;
     padding-top: 3rem;
-    flex-wrap: wrap;
+    gap: 20px;
 }
-.left, .right { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.left { width: 40%; }
-.right { width: 60%; }
 
-/* BUTTON */
+.content .left, .content .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .left { width: 40%; }
+.content .right { width: 60%; }
+
+.title {
+    font-family: "Titan One", sans-serif;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.title .happy { color: var(--color-white); }
+.title .birthday { color: var(--color-text-pink); }
+
 #btn__letter {
     margin-top: 30px;
-    background-color: var(--color-text-pink);
-    outline: none;
-    padding: 5px 15px;
-    font-size: 1rem;
+    padding: 8px 20px;
     border-radius: 50px;
-    border: 3px solid var(--color-black);
     font-family: "Sriracha", cursive;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all .5s ease-in-out;
-}
-#btn__letter:hover {
-    border-color: var(--color-heart);
-    background-color: var(--color-heart);
+    border: 3px solid var(--color-black);
+    background-color: var(--color-text-pink);
     color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
-#btn__letter i { margin-left: 5px; }
 
-/* TITLE */
-.title { text-align: center; font-family: "Titan One", sans-serif; font-size: 3rem; flex-direction: column; }
-.title .happy { color: var(--color-white); text-shadow: 2px 2px var(--color-black); }
-.title .birthday { color: var(--color-text-pink); text-shadow: 2px 2px var(--color-black); }
-
-/* NAME / DATE */
-.date__of__birth, .name {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-text-pink);
-    border-radius: 50px;
-    border: 3px solid var(--color-black);
-    padding: 5px 20px;
-    margin-top: 20px;
-    font-family: "Sriracha", cursive;
-    color: var(--color-white);
+#btn__letter:hover {
+    background-color: var(--color-heart);
+    border-color: var(--color-heart);
 }
-.name span { font-family: 'Dancing Script', cursive; font-size: 1.7rem; }
 
-/* RIGHT IMAGE */
-.right .box__account .image {
+.right .box__account {
+    position: relative;
+}
+
+.content .right .image {
     width: 400px;
     height: 400px;
     border-radius: 50%;
     overflow: hidden;
     border: 6px solid var(--color-black);
 }
-.right .box__account .image img { width: 100%; object-fit: cover; }
 
-/* SIMPLE LETTER MODAL */
+.name, .date__of__birth {
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 3px solid var(--color-black);
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name span { font-size: 1.7rem; }
+.date__of__birth span { font-size: 1.2rem; }
+
+.cricle {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    width: 100px;
+    height: 100px;
+    background-color: var(--color-text-pink);
+    border-radius: 50%;
+    border: 5px solid var(--color-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cricle span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform-origin: 0 45px;
+    transform: rotate(calc(var(--i) * 24deg));
+    color: var(--color-black);
+    font-family: "Sriracha", cursive;
+    font-size: 0.7rem;
+}
+
+.fa-heart { color: var(--color-heart); }
+
+/* ---------- LETTER MODAL SIMPLE ---------- */
 .boxMail {
     position: fixed;
     inset: 0;
@@ -120,28 +155,59 @@ html, body {
     align-items: center;
     opacity: 0;
     visibility: hidden;
-    transform: scale(0.3);
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
     z-index: 1000;
 }
 
 .boxMail.active {
     opacity: 1;
     visibility: visible;
-    transform: scale(1);
 }
 
 .boxMail-container {
-    background-color: var(--color-bg-letter);
     width: 90%;
-    max-width: 750px;
+    max-width: 700px;
     max-height: 85vh;
+    background-color: var(--color-bg-letter);
+    color: var(--color-white);
     border-radius: 18px;
-    padding: 20px;
+    padding: 25px;
     overflow-y: auto;
     font-family: "Poppins", sans-serif;
     line-height: 1.6;
     font-size: 16px;
-    color: var(--color-black);
     position: relative;
-    scroll-beha
+    scroll-behavior: smooth;
+}
+
+.boxMail-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.boxMail-container::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.5);
+    border-radius: 10px;
+}
+
+.boxMail .fa-xmark {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* letter text formatting */
+.letter-text {
+    white-space: pre-line;
+}
+
+/* MOBILE ADJUSTMENTS */
+@media screen and (max-width: 658px) {
+    .content { flex-direction: column; gap: 15px; padding-top: 2rem; }
+    .title { font-size: 1.5rem; letter-spacing: 4px; }
+    .content .right .image { width: 200px; height: 200px; }
+    .name span { font-size: 1rem; }
+    .boxMail-container { width: 95%; height: 85vh; padding: 15px; font-size: 14px; }
+}
